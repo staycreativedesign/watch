@@ -32,7 +32,7 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '>= 4.0.1'
 
-
+gem 'clearance'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml'
 
