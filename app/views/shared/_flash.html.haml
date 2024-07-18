@@ -1,0 +1,15 @@
+- flash.each do |type, messages| 
+  .z-40.absolute.top-0.left-0.w-full.animate__animated.animate__fadeInDown{class: "flash #{ flash_type?(type)}", data: { controller: 'flash'}}
+    .flex.flash
+      %div
+        %span.font-medium
+          = type.upcase
+        %ul.list-disc.list-inside{class: ""}
+          - if messages.is_a?(String)
+            = messages
+          - else 
+            - messages.each do |message|
+              %li
+                - if message.is_a?(String)
+                - else 
+                  = message.type
