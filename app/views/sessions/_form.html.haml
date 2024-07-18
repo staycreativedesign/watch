@@ -1,0 +1,13 @@
+= form_for :session, url: session_path, class: 'space-y-4.md:space-y-6' do |form|
+  %div
+    = form.label :email, class: 'input-label'
+    = form.email_field :email, class: 'input-box', required: true
+  %div.mt-3
+    = form.label :password, class: 'input-label'
+    = form.password_field :password, class: 'input-box', required: true
+  .mt-3.text-right
+    = link_to 'Forgot password?', '#', class: 'text-sm link-text'
+  .mt-3
+    = form.submit 'Login to your account', class: 'button'
+  %p.text-right.mt-3
+    = link_to "Don't have an account?", '#', class: 'text-sm link-text'

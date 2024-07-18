@@ -14,11 +14,14 @@ Rails.application.routes.draw do
            only: [:create]
 
   resources :accounts,
-            controller: 'clearance/users',
+            controller: 'accounts',
             only: Clearance.configuration.user_actions do
     resource :password,
              controller: 'clearance/passwords',
              only: %i[edit update]
+    resource :dashboard,
+             controller: 'accounts/dashboard',
+             only: %i[show]
   end
 
   resources :accounts, onoy: %i[new create edit update show]

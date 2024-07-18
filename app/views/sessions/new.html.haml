@@ -1,0 +1,12 @@
+%section.bg-no-repeat.bg-cover.bg-center.bg-gray-700{style: "background-image: url(#{ asset_path('session-bg.jpg')}"}
+  .animate__animated.animate__fadeInUp
+    .flex.flex-col.items-center.justify-center.px-6.py-8.mx-auto.pt:mt-0{class: 'md:h-[calc(100vh_-_58px)]'}
+      %a.flex.items-center.mb-6.text-2xl.font-semibold.text-white{:href => "#"}
+        %img.w-8.h-8.mr-2{:alt => "logo", :src => "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"}/
+        Flowbite
+      .w-full.bg-white.rounded-lg.shadow.md:mt-0.sm:max-w-md.xl:p-0.dark:bg-gray-800
+        .p-6.space-y-4.md:space-y-6.lg:space-y-8.sm:p-8
+          %h1.text-xl.font-bold.leading-tight.tracking-tight.text-center.text-gray-900.md:text-2xl.dark:text-white
+            Login to your account
+          .grid.gap-3
+            = render partial: 'sessions/form'
