@@ -29,7 +29,7 @@
   }
 
   .flash {
-    @apply p-4 mb-4 text-sm 
+    @apply p-2 text-sm 
   }
 
   .error-msg {
