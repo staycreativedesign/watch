@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_145706) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_141215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,10 +24,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_145706) do
     t.string "first_name"
     t.string "last_name"
     t.bigint "company_id"
+    t.string "invitation_code"
     t.index ["company_id"], name: "index_accounts_on_company_id"
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email"
     t.index ["remember_token"], name: "index_accounts_on_remember_token", unique: true
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "invitation_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invitation_codes", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
