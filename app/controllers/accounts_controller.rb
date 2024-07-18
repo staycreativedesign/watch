@@ -1,11 +1,38 @@
-class AccountsController < ApplicationController
-  def new; end
+class AccountsController < Clearance::BaseController
+  before_action :redirect_signed_in_accounts, only: %i[create new]
+  skip_before_action :require_login, only: %i[create new], raise: false
 
-  def create; end
+  def new
+    @account = Account.new
+    render template: 'accounts/new'
+  end
 
-  def edit; end
+  def create
+    @account = Account.new(account_params)
+    if @account.save
+      sign_in @account
+      redirect_back_or url_after_create
+      flash[:success] = 'Account has been created'
+    else
+      flash.now[:alert] = @account.errors
+      flash_message(type: 'alert', messages: @account.errors)
+    end
+  end
 
-  def update; end
+  private
 
-  def show; end
+  def redirect_signed_in_accounts
+    return unless signed_in?
+
+    account_dashboard_path(@account)
+  end
+
+  def url_after_create
+    account_dashboard_path(@account)
+  end
+
+  def account_params
+    params.require(:account).permit(:email, :first_name, :last_name, :password, :password_confirmation,
+                                    :invitation_code, :company_id)
+  end
 end
