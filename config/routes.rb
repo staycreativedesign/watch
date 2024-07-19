@@ -24,10 +24,12 @@ Rails.application.routes.draw do
              only: %i[show]
   end
 
+  resource :validations, only: %i[create update]
+
   resources :accounts, onoy: %i[new create edit update show]
 
-  get 'register' => 'accounts#new', as: 'sign_up'
-  get '/sign-in' => 'clearance/sessions#new', as: 'sign_in'
+  get '/register' => 'accounts#new', as: 'sign_up'
+  get '/login' => 'clearance/sessions#new', as: 'sign_in'
   delete '/sign-out' => 'clearance/sessions#destroy', as: 'sign_out'
 
   # Defines the root path route ("/")
