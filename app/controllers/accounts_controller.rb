@@ -9,10 +9,12 @@ class AccountsController < Clearance::BaseController
 
   def create
     @account = Account.new(account_params)
-    if @account.save
+    if @account.valid?
+      @account.save
+      @account.update(invitation_code: nil)
       sign_in @account
       redirect_back_or url_after_create
-      flash[:success] = 'Account has been created'
+      flash.now[:success] = 'Account has been created'
     else
       flash.now[:alert] = @account.errors
       flash_message(type: 'alert', messages: @account.errors)
@@ -24,11 +26,11 @@ class AccountsController < Clearance::BaseController
   def redirect_signed_in_accounts
     return unless signed_in?
 
-    account_dashboard_path(@account)
+    account_dashboard_path(current_user)
   end
 
   def url_after_create
-    account_dashboard_path(@account)
+    account_dashboard_path(current_user)
   end
 
   def account_params
