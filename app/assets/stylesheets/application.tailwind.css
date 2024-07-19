@@ -35,4 +35,10 @@
   .error-msg {
     @apply text-red-800 bg-red-50 dark:bg-gray-800 dark:text-red-400
   }
+
+  section {
+    @apply p-8
+  }
+
 }
+
