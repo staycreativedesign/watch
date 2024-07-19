@@ -1,0 +1,73 @@
+.bg-gray-50.dark:bg-gray-900.h-screen
+  .flex.flex-row
+    #registration{class: 'basis-3/12'}
+      .h-screen.p-8.text-white.bg-primary-500
+        %h2.mb-1.text-2xl.font-semibold Your selected plan
+        %p.mb-4.font-light.text-primary-100.sm:text-lg 30-day free trial
+        / List
+        %ul.space-y-4.text-left{:role => "list"}
+          %li.flex.items-center.space-x-3
+            / Icon
+            %svg.flex-shrink-0.w-5.h-5.text-green-300{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
+            %span Individual configuration
+          %li.flex.items-center.space-x-3
+            / Icon
+            %svg.flex-shrink-0.w-5.h-5.text-green-300{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
+            %span No setup, or hidden fees
+          %li.flex.items-center.space-x-3
+            / Icon
+            %svg.flex-shrink-0.w-5.h-5.text-green-300{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
+            %span
+              Team size:
+              %span.font-semibold 1 developer
+          %li.flex.items-center.space-x-3
+            / Icon
+            %svg.flex-shrink-0.w-5.h-5.text-green-300{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
+            %span
+              Premium support:
+              %span.font-semibold 6 months
+          %li.flex.items-center.space-x-3
+            / Icon
+            %svg.flex-shrink-0.w-5.h-5.text-green-300{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
+            %span
+              Free updates:
+              %span.font-semibold 6 months
+
+    %div{class: 'basis-9/12'}
+      = turbo_frame_tag 'show' do
+        .grid.p-8.justify-center
+          %ol.flex.items-center.mb-6.text-sm.font-medium.text-center.lg:mb-12.sm:text-base
+            %li.flex.items-center.after:w-12.after:h-1.after:border-b.after:border-gray-200.after:border-1.after:hidden.sm:after:inline-block.after:mx-6.xl:after:mx-10.dark:after:border-gray-700.text-sm.font-medium{:class => "after:content-['']"}
+              .flex.items-center.sm:block.sm:after:hidden.after:mx-2.after:font-light.text-sm.font-medium{:class => "after:content-['/']"}
+                .mr-2.sm:mb-2.sm:mx-auto 1
+                Basic Verification
+            %li.flex.items-center.after:w-12.after:h-1.after:border-b.after:border-gray-200.after:border-1.after:hidden.sm:after:inline-block.after:mx-6.xl:after:mx-10.dark:after:border-gray-700.text-sm.font-medium{:class => "after:content-['']"}
+              .flex.items-center.sm:block.sm:after:hidden.after:mx-2.after:font-light.after:text-gray-200.dark:after:text-gray-500{:class => "after:content-['/']"}
+                .mr-2.sm:mb-2.sm:mx-auto 2
+                Company
+                %span.hidden.sm:inline-flex Info
+            %li.flex.items-center.sm:block.text-sm.font-medium
+              .mr-2.sm:mb-2.sm:mx-auto 3
+              Rules
+        .grid.p-8.justify-center.animate__animated.animate__heartBeat
+          .p-6.max-w-screen-md.bg-white.rounded-lg.border.border-gray-200.shadow
+            %h1.text-2xl.font-bold.mb-1 Email Verification
+            %p.text-slate-500{:class => "text-[15px]"} Enter the 5-digit verification code that was sent to your email.
+            = form_with url: validations_path, method: :patch, data: { controller: 'verification', 'verification-target': 'form' } do |f|
+              = f.hidden_field :object, value: 'invitation_code'
+              .flex.items-center.justify-center.gap-3.mt-3
+                = f.text_field :num1, class: 'w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100', data: { 'verification-target': 'input', value: 1, action: 'input->verification#move'}, maxlength: 1
+                = f.text_field :num2, class: 'w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100', data: { 'verification-target': 'input', value: 2, action: 'input->verification#move'}, maxlength: 1
+                = f.text_field :num3, class: 'w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100', data: { 'verification-target': 'input', value: 3, action: 'input->verification#move'}, maxlength: 1
+                = f.text_field :num4, class: 'w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100', data: { 'verification-target': 'input', value: 4, action: 'input->verification#move'}, maxlength: 1
+                = f.text_field :num5, class: 'w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100', data: { 'verification-target': 'input', action: 'input->verification#move', value: 5, action: 'input->verification#move'}, maxlength: 1
+              .mx-auto.mt-4{:class => "max-w-[260px]"}
+                = f.submit 'Verify Email', class: 'button', data: { 'verification-target': 'submit'}
+            .text-sm.text-slate-500.mt-4
+              Didn't receive code?
+              %a.font-medium.text-indigo-500.hover:text-indigo-600{:href => "#0"} Resend
