@@ -1,0 +1,6 @@
+= turbo_frame_tag 'setup_nav' do
+  = render partial: 'shared/accounts/setup/nav', locals: { active: 'company' }
+= turbo_frame_tag 'show' do
+  .px-8.pb-8.justify-center.animate__animated.animate__heartBeat
+    = render partial: '/accounts/setup/company/form', locals: { account: @account}
+

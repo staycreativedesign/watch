@@ -1,0 +1,7 @@
+  = turbo_frame_tag 'setup_nav' do
+    = render partial: 'shared/accounts/setup/nav', locals: { active: 'inventory' }
+  = turbo_frame_tag 'show' do
+    .px-8.pb-8.justify-center.animate__animated.animate__heartBeat
+      = render partial: '/accounts/setup/inventory/form', locals: { account: @account}
+= render_flash_stream
+

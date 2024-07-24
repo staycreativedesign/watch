@@ -1,0 +1,21 @@
+.grid.px-8.pt-8.justify-center
+  %ol.flex.items-center.mb-6.text-sm.font-medium.text-center.lg:mb-12.sm:text-base
+    %li.flex.items-center.after:w-12.after:h-1.after:border-b.after:border-gray-200.after:border-1.after:hidden.sm:after:inline-block.after:mx-6.xl:after:mx-10.dark:after:border-gray-700.text-sm.font-medium{class: "#{'text-primary-800' unless active != 'basic'}"}
+      .flex.items-center.sm:block.sm:after:hidden.after:mx-2.after:font-light.text-sm.font-medium{:class => "after:content-['/']"}
+        .mr-2.sm:mb-2.sm:mx-auto
+          1
+        Basic Verification
+    %li.flex.items-center.after:w-12.after:h-1.after:border-b.after:border-gray-200.after:border-1.after:hidden.sm:after:inline-block.after:mx-6.xl:after:mx-10.dark:after:border-gray-700.text-sm.font-medium{class: "#{'text-primary-800' unless active != 'company'}"}
+      .flex.items-center.sm:block.sm:after:hidden.after:mx-2.after:font-light.after:text-gray-200.dark:after:text-gray-500{:class => "after:content-['/']"}
+        .mr-2.sm:mb-2.sm:mx-auto 2
+        Basic Company
+        %span.hidden.sm:inline-flex Info
+    %li.flex.items-center.after:w-12.after:h-1.after:border-b.after:border-gray-200.after:border-1.after:hidden.sm:after:inline-block.after:mx-6.xl:after:mx-10.dark:after:border-gray-700.text-sm.font-medium{class: "#{'text-primary-800' unless active != 'inventory'}"}
+      .flex.items-center.sm:block.sm:after:hidden.after:mx-2.after:font-light.after:text-gray-200.dark:after:text-gray-500{:class => "after:content-['/']"}
+        .mr-2.sm:mb-2.sm:mx-auto 3
+        Inventory
+        %span.hidden.sm:inline-flex Info
+    %li.flex.items-center.sm:block.text-sm.font-medium{class: "#{'text-primary-800' unless active != 'finalize'}"}
+      .mr-2.sm:mb-2.sm:mx-auto 4
+      Finalize
+

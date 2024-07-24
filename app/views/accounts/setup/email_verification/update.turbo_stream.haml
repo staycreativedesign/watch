@@ -1,0 +1,5 @@
+= turbo_stream.update 'setup_nav' do
+  = render partial: 'shared/accounts/setup/nav', locals: { active: 'company' }
+= turbo_stream.update 'show' do
+  = render partial: '/accounts/setup/company/form', locals: { account: @account}
+= render_flash_stream(type: 'success', messages: nil)
