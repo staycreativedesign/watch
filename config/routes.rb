@@ -19,10 +19,33 @@ Rails.application.routes.draw do
     resource :password,
              controller: 'clearance/passwords',
              only: %i[edit update]
-    resource :dashboard,
-             controller: 'accounts/dashboard',
+
+    # initial setup -------------------------
+    resource :email_verification,
+             controller: 'accounts/setup/email_verification',
+             only: %i[update]
+    resource :company,
+             controller: 'accounts/setup/company',
+             only: %i[new create edit update]
+    resource :inventory,
+             controller: 'accounts/setup/inventory',
              only: %i[show]
+    resource :finalize,
+             controller: 'accounts/setup/finalize',
+             only: %i[show]
+    # initial setup -------------------------
   end
+
+  resource :addresses do
+    collection do
+      get :states
+      get :cities
+    end
+  end
+
+  resource :dashboard,
+           controller: 'accounts/dashboard',
+           only: %i[show]
 
   resource :validations, only: %i[create update]
 

@@ -6,7 +6,7 @@ module Accounts
     private
 
     def find_account
-      @account = Account.find(params[:account_id])
+      @account = current_user
     end
   end
 end
