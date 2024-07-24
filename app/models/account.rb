@@ -8,7 +8,6 @@
 #  email                        :string           not null
 #  encrypted_password           :string(128)      not null
 #  first_name                   :string
-#  invitation_code              :string
 #  invitation_code_confirmed_at :datetime
 #  last_name                    :string
 #  remember_token               :string(128)      not null
