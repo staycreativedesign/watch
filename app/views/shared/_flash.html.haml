@@ -8,8 +8,6 @@
           - if messages.is_a?(String)
             = messages
           - else 
-            - messages.each do |message|
+            - messages.full_messages.each do |message|
               %li
-                - if message.is_a?(String)
-                - else 
-                  = message.type
+                = message
