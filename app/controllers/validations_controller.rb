@@ -3,13 +3,7 @@ class ValidationsController < ApplicationController
   def create; end
 
   def update
-    if ValidationServices.validate!(params[:object], set_full_code)
-    # foo
-    else
-      flash.now[:alert] =
-        'Verification failed!. Either you have entered a wrong digit or the code has been used already.'
-      flash_message(type: 'alert')
-    end
+    @outcome = ValidationServices.validate!(params[:object], set_full_code)
   end
 
   private
