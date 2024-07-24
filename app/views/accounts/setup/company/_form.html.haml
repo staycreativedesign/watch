@@ -3,13 +3,38 @@
     Basic Company Information
   .grid.grid-cols-1.gap-3{ data: { controller: 'countries'}}
     %div
-      = f.label :name, 'Company name', class: 'input-label'
-      = f.text_field :name, class: 'input-box', placeholder: 'Company name'
+      .flex.items-center.p-4.mb-4.text-sm.text-red-800.border.border-red-300.rounded-lg.bg-red-50.dark:bg-gray-800.dark:text-red-400.dark:border-red-800{:role => "alert"}
+        %svg.flex-shrink-0.inline.w-4.h-4.me-3{"aria-hidden" => "true", :fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"}
+        %span.sr-only Info
+        %div
+          %span.font-medium 
+            We are currently not accepting personal accounts. If you do not have your business registered please do so, and then proceed.
+    .grid.grid-cols-2.gap-3
+      %div
+        = f.label :name, 'Registerd Company name', class: 'input-label'
+        = f.text_field :name, class: 'input-box', placeholder: 'Company name'
+        %small.font-semibold.text-blue-800
+          .flex.flex-row.justify-content
+            = render partial: 'shared/popup', locals: { location: 'top', target: 'popover-description'}
+            .mt-1
+              Please note this registered company name will be used for validation.
+      %div
+        = f.label :registration_code, 'Registration Number', class: 'input-label'
+        = f.text_field :registration_code, class: 'input-box', placeholder: 'Company name'
+        %small.font-semibold.text-blue-800
+          .flex.flex-row.justify-content
+            = render partial: 'shared/popup', locals: { location: 'top', target: 'popover-description'}
+            .mt-1
+              Please note this registration number will be used for validation.
     %div
-      = f.label :contact_number, 'Main contact number', class: 'input-label'
+      = f.label :contact_number, 'Main Contact number', class: 'input-label'
       = f.text_field :contact_number, class: 'input-box', placeholder: 'Contact Number'
-      %small.font-semibold
-        Please note this phone number will be used for validation
+      %small.font-semibold.text-blue-800
+        .flex.flex-row.justify-content
+          = render partial: 'shared/popup', locals: { location: 'top', target: 'popover-description'}
+          .mt-1
+            Please note this phone number will be used for validation.
     .grid.grid-cols-2.gap-3
       %div
         = f.label :country, 'Country', class: 'input-label'
@@ -27,6 +52,15 @@
     %div
       = f.label :address1, 'Address', class: 'input-label'
       = f.text_field :address1, class: 'input-box', placeholder: 'Address'
+      %small.font-semibold.text-blue-800
+        .flex.flex-row.justify-content
+          = render partial: 'shared/popup', locals: { location: 'top', target: 'popover-description'}
+          .mt-1
+            Please note this address will be used for validation.
   .mt-3
     = f.submit nil, class: 'button'
-
+#popover-description.popover{ data: { 'popover': '' }, role: 'tooltip' }
+  .p-3.space-y-
+    %h3.font-semibold.text-gray-900.dark:text-white 
+    %p
+      We validate all companies using Global Business Registry Infosystem

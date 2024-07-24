@@ -25,7 +25,7 @@ module Accounts
 
       def company_params
         params.require(:company).permit(:address1, :address2, :name, :city, :state, :postal_code, :country,
-                                        :contact_number)
+                                        :contact_number, :registration_code)
       end
     end
   end

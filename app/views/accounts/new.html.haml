@@ -5,7 +5,7 @@
         = form_for @account, class: 'space-y-4.max-w-md.md:space-y-6.xl:max-w-xl' do |f|
           %h1.mb-4.text-3xl.font-extrabold.tracking-tight.leading-none.text-black.xl:text-5xl 
             Beta Invitation Code
-          = f.text_field :invitation_code, class: 'input-box', placeholder: 'Copy & Paste Invitation Code', required: true
+          -# = f.text_field :invitation_code, class: 'input-box', placeholder: 'Copy & Paste Invitation Code', required: true
           .grid.grid-cols-2.gap-3
             %div.mt-3
               = f.label :first_name, class: 'input-label'
